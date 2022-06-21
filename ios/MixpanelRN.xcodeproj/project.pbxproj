@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		933C90A62861B7D40075585F /* fix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933C90A52861B7D40075585F /* fix.swift */; };
 		93ED72D6984F62AA86E04642 /* libPods-MixpanelRN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4161A33A6D06BF09881EA4BB /* libPods-MixpanelRN.a */; };
 		D3CC1281139345C4B3CCA7A8 /* libPods-MixpanelRN-MixpanelRNTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A26CBE52F916CB46F219DD8 /* libPods-MixpanelRN-MixpanelRNTests.a */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,8 @@
 		4161A33A6D06BF09881EA4BB /* libPods-MixpanelRN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MixpanelRN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MixpanelRN/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8718E9171AF24CE294F72BBA /* Pods-MixpanelRN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MixpanelRN.debug.xcconfig"; path = "Target Support Files/Pods-MixpanelRN/Pods-MixpanelRN.debug.xcconfig"; sourceTree = "<group>"; };
+		933C90A42861B7D30075585F /* MixpanelRN-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MixpanelRN-Bridging-Header.h"; sourceTree = "<group>"; };
+		933C90A52861B7D40075585F /* fix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fix.swift; sourceTree = "<group>"; };
 		AF4C1B046A9BD8DDA225B3A6 /* Pods-MixpanelRN-MixpanelRNTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MixpanelRN-MixpanelRNTests.debug.xcconfig"; path = "Target Support Files/Pods-MixpanelRN-MixpanelRNTests/Pods-MixpanelRN-MixpanelRNTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C33E3DF8D44DDBAD5F60C0A6 /* Pods-MixpanelRN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MixpanelRN.release.xcconfig"; path = "Target Support Files/Pods-MixpanelRN/Pods-MixpanelRN.release.xcconfig"; sourceTree = "<group>"; };
 		E00169D198B910877BA28E34 /* Pods-MixpanelRN-MixpanelRNTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MixpanelRN-MixpanelRNTests.release.xcconfig"; path = "Target Support Files/Pods-MixpanelRN-MixpanelRNTests/Pods-MixpanelRN-MixpanelRNTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,7 +117,6 @@
 				AF4C1B046A9BD8DDA225B3A6 /* Pods-MixpanelRN-MixpanelRNTests.debug.xcconfig */,
 				E00169D198B910877BA28E34 /* Pods-MixpanelRN-MixpanelRNTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -128,12 +130,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				933C90A52861B7D40075585F /* fix.swift */,
 				13B07FAE1A68108700A75B9A /* MixpanelRN */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MixpanelRNTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				4B5CC073DDC269F243BA95E9 /* Pods */,
+				933C90A42861B7D30075585F /* MixpanelRN-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -208,7 +212,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -411,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933C90A62861B7D40075585F /* fix.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -431,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AF4C1B046A9BD8DDA225B3A6 /* Pods-MixpanelRN-MixpanelRNTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -458,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E00169D198B910877BA28E34 /* Pods-MixpanelRN-MixpanelRNTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = MixpanelRNTests/Info.plist;
@@ -498,6 +505,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MixpanelRN;
+				SWIFT_OBJC_BRIDGING_HEADER = "MixpanelRN-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -523,6 +531,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MixpanelRN;
+				SWIFT_OBJC_BRIDGING_HEADER = "MixpanelRN-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -582,11 +591,7 @@
 					/usr/lib/swift,
 					"$(inherited)",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -640,11 +645,7 @@
 					/usr/lib/swift,
 					"$(inherited)",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

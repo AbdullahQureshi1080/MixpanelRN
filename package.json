@@ -10,8 +10,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "mixpanel-react-native": "^1.4.2",
     "react": "17.0.1",
-    "react-native": "0.64.2"
+    "react-native": "0.64.2",
+    "react-native-config": "^1.4.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
