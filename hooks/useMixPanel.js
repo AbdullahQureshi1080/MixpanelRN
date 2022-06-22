@@ -18,7 +18,7 @@ const assignRandId = () => {
   return result;
 };
 
-const useMixPanel = () => {
+const useMixPanel = serverURL => {
   const [statusText, setStatusText] = useState('');
   const [isInitialized, setIsInitialized] = useState(false);
   const [mixpanel, setMixPanel] = useState(null);
@@ -103,8 +103,16 @@ const useMixPanel = () => {
   };
 
   const initializeMixPanel = async () => {
-    // mixpanel.is
-    const mixpanel = new Mixpanel(Config.MIXPANEL_PROJECT_TOKEN);
+    // Config.MIXPANEL_PROJECT_TOKEN;
+    let projectToken =
+      serverURL == 'staging'
+        ? Config.MIXPANEL_PROJECT_TOKEN_STAGING
+        : Config.MIXPANEL_PROJECT_TOKEN_PRODUCTION;
+
+    logStatus(
+      `THE Server URL,${serverURL}${Config.MIXPANEL_PROJECT_TOKEN_STAGING}`,
+    );
+    const mixpanel = new Mixpanel(projectToken);
     setMixPanel(mixpanel);
     mixpanel.init();
     setIsInitialized(true);
@@ -124,24 +132,24 @@ const useMixPanel = () => {
     }
   }, [isInitialized]);
 
-  const trackEvent = (msg, data, trackTime) => {
+  const trackTime = msg => {
+    if (!mixpanel) {
+      return logStatus('Mixpanel not initialized: trackTime');
+    }
+    mixpanel.timeEvent(msg);
+  };
+
+  const trackEvent = (msg, data, timeTrack) => {
     Alert.alert('Hello');
     // Track with event-name - || -
     // Track with event-name and property
     if (!mixpanel) {
       return logStatus('Mixpanel not initialized: trackEvent');
     }
-    if (trackTime) {
-      trackEvent(msg);
+    if (timeTrack) {
+      trackTime(msg);
     }
     mixpanel.track(msg, data);
-  };
-
-  const trackTime = msg => {
-    if (!mixpanel) {
-      return logStatus('Mixpanel not initialized: trackTime');
-    }
-    mixpanel.timeEvent(msg);
   };
 
   const getSuperProperties = async () => {
@@ -156,6 +164,11 @@ const useMixPanel = () => {
     if (!user) {
       return logStatus('User is not defined');
     }
+    if (!mixpanel) {
+      return logStatus('Mixpanel not initialized: setUserProfileProperty');
+    }
+    console.log('attribute', attribute);
+    console.log('property', property);
     // identify must be called before
     // user profile properties can be set
     mixpanel.identify(user.id);
@@ -196,6 +209,13 @@ const useMixPanel = () => {
     mixpanel.unregisterSuperProperty(propertyName);
   };
 
+  const getPeople = () => {
+    if (!mixpanel) {
+      return logStatus('Mixpanel not initialized: unregisterSuperProperty');
+    }
+    logStatus(mixpanel.getPeople('log'));
+  };
+
   return {
     initializeMixPanel,
     isInitialized,
@@ -211,6 +231,7 @@ const useMixPanel = () => {
     registerSuperProperties,
     clearSuperProperties,
     unregisterSuperProperty,
+    getPeople,
   };
 };
 

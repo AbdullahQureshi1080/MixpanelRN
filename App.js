@@ -35,7 +35,8 @@ import CustomTextInput from './components/CustomTextInput';
 import useMixPanel from './hooks/useMixPanel';
 
 const App = () => {
-  const mixpanel = useMixPanel();
+  const [serverURL, setServerURL] = useState('staging');
+  const mixpanel = useMixPanel(serverURL);
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -54,13 +55,27 @@ const App = () => {
     <SafeAreaView style={[backgroundStyle]}>
       <View style={styles.container}>
         <View style={styles.head}>
-          <Text style={styles.headText}>Mix Panel</Text>
+          <Text style={styles.headText}>Mix Panel - {serverURL}</Text>
+          <CustomButton
+            name={`Switch to ${
+              serverURL == 'staging' ? 'production' : 'staging'
+            }`}
+            onPress={() =>
+              setServerURL(serverURL == 'staging' ? 'production' : 'staging')
+            }
+          />
         </View>
         <View style={styles.section}>
           <CustomTextInput onChangeText={setMessage} text={message} />
           <CustomButton
             name={'Track Event'}
-            onPress={() => mixpanel.trackEvent(message, user)}
+            onPress={() =>
+              mixpanel.trackEvent(
+                message,
+                {testMode: true, testing: false},
+                true,
+              )
+            }
           />
           <CustomButton
             name={'Get Super Properties'}
@@ -75,6 +90,12 @@ const App = () => {
                 leaveTime: '6:30 PM',
                 workState: '80%',
               });
+            }}
+          />
+          <CustomButton
+            name={'GetPeople'}
+            onPress={() => {
+              mixpanel.getPeople();
             }}
           />
         </View>
